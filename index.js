@@ -1,7 +1,11 @@
-console.log('esto es una prueba')
+import express from 'express';
+console.log('esto es una pruebita')
 
 // 1- configuraciones iniciales
-import express from 'express';
+
+const app = express();
+//crear una variable con express
+app.set('port', process.env.PORT || 4004)
 
 // 2- middlewares 
 
