@@ -50,3 +50,15 @@ export const eliminarProducto = async(req, res) => {
         res.status(400).json({ mensaje: "El producto no se puede eliminar" });
     }
 }
+
+export const obtenerProducto = async(req, res) => {
+    try {
+        // ir a la db y pedir los productos
+        //aqui los datos deberian estar validados
+        const productoBuscado = await Producto.findById(req.params.id);
+        res.status(200).json(productoBuscado);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ mensaje: "El producto no se puede obtener" });
+    }
+}
