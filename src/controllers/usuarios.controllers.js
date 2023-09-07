@@ -18,14 +18,14 @@ export const login = async(req, res) => {
             res.status(400).json({ mensaje: "correo o password invalidos - password" })
         }
 
-        response.status(200).json({
+        res.status(200).json({
             mensaje: "el usuario existe",
             uid: usuario._id,
-            nombre: usuario.usuario
+            nombre: usuario.nombreUsuario
         })
     } catch (error) {
         console.log(error);
-        response.status(404).json({ mensaje: 'Error al buscar usuario' });
+        res.status(404).json({ mensaje: 'Error al buscar usuario' });
     }
 }
 
