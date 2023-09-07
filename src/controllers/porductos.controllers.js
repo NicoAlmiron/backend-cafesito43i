@@ -25,6 +25,8 @@ export const crearProducto = async(req, res) => {
     }
 }
 
+
+
 export const editarProducto = async(req, res) => {
     try {
         // ir a la db y pedir los productos
@@ -56,6 +58,8 @@ export const obtenerProducto = async(req, res) => {
         // ir a la db y pedir los productos
         //aqui los datos deberian estar validados
         const productoBuscado = await Producto.findById(req.params.id);
+
+        //se puede poner un if para trabajar el if si el id no existe
         res.status(200).json(productoBuscado);
     } catch (error) {
         console.log(error);

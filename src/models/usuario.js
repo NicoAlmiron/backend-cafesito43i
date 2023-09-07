@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 const usuarioSchema = new Schema({
-    nombreUsuario: { type: String, required: true, minLength: 2, maxLength: 50 },
-    email: { type: String, unique: true, required: true, minLength: 2, maxLength: 50 },
-    password: { type: String, required: true, minLength: 2, maxLength: 20 }
+    nombreUsuario: { type: String, required: true, maxLength: 50 },
+    email: { type: String, unique: true, required: true, maxLength: 200 },
+    password: { type: String, required: true }
 })
 
 

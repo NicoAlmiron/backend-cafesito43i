@@ -28,8 +28,8 @@ app.use(morgan('dev')); //herramienta de ayuda para el developer (nos da datos e
 
 //https://localhost:4000/api/producto
 app.use('/api', productoRouter)
+app.use('/api/auth', usuarioRouter)
 
 // app.use('/api', usuarioRouter)
 
 //crear una ruta y controlador para los usuarios
-app.use('/api', usuarioRouter)
