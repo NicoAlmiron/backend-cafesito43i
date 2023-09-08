@@ -19,7 +19,7 @@ export const login = async(req, res) => {
 
         const passwordValido = bcrypt.compareSync(password, usuario.password)
         if (!passwordValido) {
-            return res.status(400).json({ mensaje: "correo o password invalidos - password" })
+            return res.status(400).json({ mensaje: "correo o password invalidos - password" });
         }
 
         res.status(200).json({
@@ -57,7 +57,7 @@ export const crearUsuario = async(req, res) => {
 
         const salt = bcrypt.genSaltSync(10);
 
-        usuario.password = bcrypt.hashSync(password, salt)
+        usuario.password = bcrypt.hashSync(password, salt);
 
         await usuario.save();
         res.status(201).json({ mensaje: 'El usuario fue creado correctamente', nombre: usuario.nombreUsuario, uid: usuario._id });

@@ -6,7 +6,7 @@ const productoSchema = new Schema({
     imagen: { type: String, required: true },
     categoria: { type: String, required: true },
     descripcion: { type: String, required: true }
-})
+});
 
 // vamos a generar un modelo
 
