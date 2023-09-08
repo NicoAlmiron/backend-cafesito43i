@@ -6,23 +6,28 @@ import bcrypt from 'bcrypt'
 export const login = async(req, res) => {
     try {
         const { email, password } = req.body;
-        let usuario = await Usuario.findOne({ email })
+        let usuario = await Usuario.findOne({ email });
+
+
         if (!usuario) {
             //si existe 
             return res.status(400).json({
                 mensaje: "correo o password invalidos - correo"
-            })
+            });
         }
+
+
         const passwordValido = bcrypt.compareSync(password, usuario.password)
         if (!passwordValido) {
-            res.status(400).json({ mensaje: "correo o password invalidos - password" })
+            return res.status(400).json({ mensaje: "correo o password invalidos - password" })
         }
 
         res.status(200).json({
             mensaje: "el usuario existe",
             uid: usuario._id,
             nombre: usuario.nombreUsuario
-        })
+        });
+
     } catch (error) {
         console.log(error);
         res.status(404).json({ mensaje: 'Error al buscar usuario' });
@@ -35,7 +40,7 @@ export const listarUsuarios = async(req, res) => {
         res.status(200).json(usuarios);
     } catch (error) {
         console.log(error);
-        response.status(404).json({ mensaje: 'Error al buscar el producto, no pudimos encontrarlo' });
+        response.status(404).json({ mensaje: 'Error al buscar los usuarios, no pudimos encontrarlos' });
     }
 }
 
