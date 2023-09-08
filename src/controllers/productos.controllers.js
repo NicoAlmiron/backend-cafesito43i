@@ -6,7 +6,7 @@ export const listarProductos = async(req, res) => {
         res.status(200).json(productos);
     } catch (error) {
         console.log(error);
-        response.status(404).json({ mensaje: 'Error al buscar el producto, no pudimos encontrarlo' });
+        res.status(404).json({ mensaje: 'Error al buscar el producto, no pudimos encontrarlo' });
     }
 }
 
