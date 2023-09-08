@@ -14,7 +14,6 @@ export const crearProducto = async(req, res) => {
     try {
         // ir a la db y pedir los productos
         //aqui los datos deberian estar validados
-        console.log(req.body);
         const productoNuevo = new Producto(req.body);
         //guardar producto nuevo en la db
         await productoNuevo.save();
