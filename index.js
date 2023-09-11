@@ -5,6 +5,8 @@ import 'dotenv/config' //permite procesar variables de entorno
 import productoRouter from './src/routes/productos.routes.js';
 import usuarioRouter from './src/routes/usuarios.routes.js';
 import './src/database/database.js';
+import path from 'path';
+
 // 1- configuraciones iniciales
 
 const app = express();
@@ -19,13 +21,20 @@ app.use(cors()); // permite conexiones remotas
 app.use(express.json()); // permite entender los datos en formato json
 app.use(express.urlencoded({ extended: true })); //ayuda entender datos tipo array del body (request)
 app.use(morgan('dev')); //herramienta de ayuda para el developer (nos da datos en la terminal)
+// console.log(path.join(__dirname, '/public'));
+// agregar un archivo estatico
+console.log(path.join('C:/Users/Nico/OneDrive/Escritorio/Proyectos/Nueva carpeta/backend-cafesito43i', '/public'));
+app.use(express.static(path.join('C:/Users/Nico/OneDrive/Escritorio/Proyectos/Nueva carpeta/backend-cafesito43i', '/public')));
+// app.use(express.static(, '/public')));
 
 // 3- crear las rutas (siempre despues de los middlewares)
 
 //https://localhost:4000/api/producto
+//https://backend-cafesito43i.vercel.app/api/producto
 app.use('/api', productoRouter);
-app.use('/api/auth', usuarioRouter);
 
 // app.use('/api', usuarioRouter)
+//https://backend-cafesito43i.vercel.app/api/auth
+app.use('/api/auth', usuarioRouter);
 
 //crear una ruta y controlador para los usuarios
