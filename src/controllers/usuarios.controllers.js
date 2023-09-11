@@ -7,8 +7,6 @@ export const login = async(req, res) => {
     try {
         const { email, password } = req.body;
         let usuario = await Usuario.findOne({ email });
-
-
         if (!usuario) {
             //si existe 
             return res.status(400).json({
@@ -39,7 +37,6 @@ export const listarUsuarios = async(req, res) => {
         const usuarios = await Usuario.find();
         res.status(200).json(usuarios);
     } catch (error) {
-        console.log(error);
         response.status(404).json({ mensaje: 'Error al buscar los usuarios, no pudimos encontrarlos' });
     }
 }
@@ -47,9 +44,7 @@ export const listarUsuarios = async(req, res) => {
 export const crearUsuario = async(req, res) => {
     try {
         const { email, password } = req.body;
-
         let usuario = await Usuario.findOne({ email });
-
         if (usuario) {
             return res.status(400).json({ mensaje: 'ya esxiste un usuario con el correo envieado' });
         }

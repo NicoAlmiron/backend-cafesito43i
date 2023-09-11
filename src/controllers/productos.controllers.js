@@ -24,8 +24,6 @@ export const crearProducto = async(req, res) => {
     }
 }
 
-
-
 export const editarProducto = async(req, res) => {
     try {
         // ir a la db y pedir los productos
